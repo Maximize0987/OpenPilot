@@ -230,7 +230,7 @@ def startup_master_alert(CP: car.CarParams, CS: car.CarState, sm: messaging.SubM
   if "REPLAY" in os.environ:
     branch = "replay"
 
-  return StartupAlert("WARNING: This branch is not tested", branch, alert_status=AlertStatus.userPrompt)
+  return StartupAlert("WARNING: This branch is not tested", branch, alert_status=AlertStatus.none)        # old = return StartupAlert("WARNING: This branch is not tested", branch, alert_status=AlertStatus.userPrompt)
 
 def below_engage_speed_alert(CP: car.CarParams, CS: car.CarState, sm: messaging.SubMaster, metric: bool, soft_disable_time: int) -> Alert:
   return NoEntryAlert(f"Drive above {get_display_speed(CP.minEnableSpeed, metric)} to engage")
@@ -646,7 +646,7 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.buttonEnable: {
-    #ET.ENABLE: EngagementAlert(AudibleAlert.engage),
+    ET.ENABLE: EngagementAlert(AudibleAlert.none),       # old = ET.ENABLE: EngagementAlert(AudibleAlert.engage),
   },
 
   EventName.pcmDisable: {
@@ -654,8 +654,8 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.buttonCancel: {
-    #ET.USER_DISABLE: EngagementAlert(AudibleAlert.disengage),
-    #ET.NO_ENTRY: NoEntryAlert("Cancel Pressed"),
+    ET.USER_DISABLE: EngagementAlert(AudibleAlert.none),     # old = ET.USER_DISABLE: EngagementAlert(AudibleAlert.disengage),
+    ET.NO_ENTRY: NoEntryAlert("Cancel Pressed"),
   },
 
   EventName.brakeHold: {
@@ -669,8 +669,8 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.pedalPressed: {
-    #ET.USER_DISABLE: EngagementAlert(AudibleAlert.disengage),
-    #ET.NO_ENTRY: NoEntryAlert("Pedal Pressed",
+    ET.USER_DISABLE: EngagementAlert(AudibleAlert.none),       # old = ET.USER_DISABLE: EngagementAlert(AudibleAlert.disengage),
+    ET.NO_ENTRY: NoEntryAlert("Pedal Pressed",
                               #visual_alert=VisualAlert.brakePressed),
   },
 
