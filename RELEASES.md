@@ -1,15 +1,7 @@
-Version 0.9.7 (2024-06-13)
+Version 0.9.7.1 (2024-10-18)
 ========================
-* New driving model
-  * Inputs the past curvature for smoother and more accurate lateral control
-  * Simplified neural network architecture in the model's last layers
-  * Minor fixes to desire augmentation and weight decay
-* New driver monitoring model
-  * Improved end-to-end bit for phone detection
-* Adjust driving personality with the follow distance button
-* Support for hybrid variants of supported Ford models
-* Fingerprinting without the OBD-II port on all cars
-* Improved fuzzy fingerprinting for Ford and Volkswagen
+* Reduce Accel
+* reduce excessive nags
 
 Version 0.9.6 (2024-02-27)
 ========================
