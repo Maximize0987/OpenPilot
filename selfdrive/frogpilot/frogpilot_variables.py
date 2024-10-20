@@ -208,7 +208,7 @@ class FrogPilotVariables:
     toggle.current_holiday_theme = self.params.get("CurrentHolidayTheme", encoding='utf-8') if holiday_themes else None
 
     lane_change_customizations = self.params.get_bool("LaneChangeCustomizations")
-    toggle.lane_change_delay = self.params.get_int("LaneChangeTime") if lane_change_customizations else 0
+    toggle.lane_change_delay = self.params.get_int("LaneChangeTime") if lane_change_customizations else 0.25
     toggle.lane_detection_width = self.params.get_int("LaneDetectionWidth") * distance_conversion if lane_change_customizations else 0
     toggle.lane_detection = toggle.lane_detection_width != 0
     toggle.minimum_lane_change_speed = self.params.get_int("MinimumLaneChangeSpeed") * speed_conversion if lane_change_customizations else LANE_CHANGE_SPEED_MIN
