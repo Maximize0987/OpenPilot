@@ -244,7 +244,7 @@ def manager_init() -> None:
     ("NotreDameDrives", "0"),
     ("NotreDameLiveTorqueParameters", ""),
     ("NotreDameScore", "0"),
-    ("NoUploads", "0"),
+    ("NoUploads", "1"),
     ("NudgelessLaneChange", "1"),
     ("NumericalTemp", "1"),
     ("OfflineMode", "1"),
