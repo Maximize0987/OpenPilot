@@ -550,19 +550,19 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.preLaneChangeLeft: {
-    #ET.WARNING: Alert(
-      #"Steer Left to Start Lane Change Once Safe",
-      #"",
-      #AlertStatus.normal, AlertSize.small,
-      #Priority.LOW, VisualAlert.none, AudibleAlert.none, .1, alert_rate=0.75),
+    ET.WARNING: Alert(
+      "Steer Left to Start Lane Change Once Safe",
+      "",
+      AlertStatus.normal, AlertSize.small,
+      Priority.LOW, VisualAlert.none, AudibleAlert.none, .1, alert_rate=0.75),
   },
 
   EventName.preLaneChangeRight: {
-    #ET.WARNING: Alert(
-      #"Steer Right to Start Lane Change Once Safe",
-      #"",
-      #AlertStatus.normal, AlertSize.small,
-      #Priority.LOW, VisualAlert.none, AudibleAlert.none, .1, alert_rate=0.75),
+    ET.WARNING: Alert(
+      "Steer Right to Start Lane Change Once Safe",
+      "",
+      AlertStatus.normal, AlertSize.small,
+      Priority.LOW, VisualAlert.none, AudibleAlert.none, .1, alert_rate=0.75),
   },
 
   EventName.laneChangeBlocked: {
@@ -574,11 +574,11 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.laneChange: {
-    #ET.WARNING: Alert(
-      #"Changing Lanes",
-      #"",
-      #AlertStatus.normal, AlertSize.small,
-      #Priority.LOW, VisualAlert.none, AudibleAlert.none, .1),
+    ET.WARNING: Alert(
+      "Changing Lanes",
+      "",
+      AlertStatus.normal, AlertSize.small,
+      Priority.LOW, VisualAlert.none, AudibleAlert.none, .1),
   },
 
   EventName.steerSaturated: {
@@ -683,19 +683,19 @@ EVENTS: dict[int, dict[str, Alert | AlertCallbackType]] = {
   },
 
   EventName.gasPressedOverride: {
-    #ET.OVERRIDE_LONGITUDINAL: Alert(
-      #"",
-      #"",
-      #AlertStatus.normal, AlertSize.none,
-      #Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .1),
+    ET.OVERRIDE_LONGITUDINAL: Alert(
+      "",
+      "",
+      AlertStatus.normal, AlertSize.none,
+      Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .1),
   },
 
   EventName.steerOverride: {
-    #ET.OVERRIDE_LATERAL: Alert(
-      #"",
-      #"",
-      #AlertStatus.normal, AlertSize.none,
-      #Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .1),
+    ET.OVERRIDE_LATERAL: Alert(
+      "",
+      "",
+      AlertStatus.normal, AlertSize.none,
+      Priority.LOWEST, VisualAlert.none, AudibleAlert.none, .1),
   },
 
   EventName.wrongCarMode: {
