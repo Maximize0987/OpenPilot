@@ -80,17 +80,17 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.init('pid')
       ret.lateralTuning.pid.kiBP = [0.0]
       ret.lateralTuning.pid.kpBP = [0.0]
-      ret.lateralTuning.pid.kpV = [0.15]       # old = ret.lateralTuning.pid.kpV = [0.6]
-      ret.lateralTuning.pid.kiV = [0.05]       # old = ret.lateralTuning.pid.kiV = [0.1]
-      ret.lateralTuning.pid.kf = 0.00004       # old = ret.lateralTuning.pid.kf = 0.00007818594
+      ret.lateralTuning.pid.kpV = [0.54]           # old = ret.lateralTuning.pid.kpV = [0.6]
+      ret.lateralTuning.pid.kiV = [0.09]            # old = ret.lateralTuning.pid.kiV = [0.1]
+      ret.lateralTuning.pid.kf = 0.00007818594
 
       # 2019+ RAV4 TSS2 uses two different steering racks and specific tuning seems to be necessary.
       # See https://github.com/commaai/openpilot/pull/21429#issuecomment-873652891
       for fw in car_fw:
         if fw.ecu == "eps" and (fw.fwVersion.startswith(b'\x02') or fw.fwVersion in [b'8965B42181\x00\x00\x00\x00\x00\x00']):
-          ret.lateralTuning.pid.kpV = [0.6]            # old = ret.lateralTuning.pid.kpV = [0.15]
-          ret.lateralTuning.pid.kiV = [0.1]            # old = ret.lateralTuning.pid.kiV = [0.05]
-          ret.lateralTuning.pid.kf = 0.00007818594     # old = ret.lateralTuning.pid.kf = 0.00004
+          ret.lateralTuning.pid.kpV = [0.15]
+          ret.lateralTuning.pid.kiV = [0.05]
+          ret.lateralTuning.pid.kf = 0.00004
           break
 
     ret.centerToFront = ret.wheelbase * 0.44
