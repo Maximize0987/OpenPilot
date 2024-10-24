@@ -161,7 +161,7 @@ class CarInterface(CarInterfaceBase):
 
       ret.stoppingDecelRate = 0.2      # old = ret.stoppingDecelRate = 0.1  # reach stopping target smoothly
       # old = ret.vEgoStopping = 0.15
-      # old = ret.vEgoStarting = 0.15
+      ret.vEgoStarting = 0.15
 
     return ret
 
