@@ -46,12 +46,24 @@ def limit_accel_in_turns(v_ego, angle_steers, a_target, CP):
   # FIXME: This function to calculate lateral accel is incorrect and should use the VehicleModel
   # The lookup table for turns should also be updated if we do this
   a_total_max = interp(v_ego, _A_TOTAL_MAX_BP, _A_TOTAL_MAX_V)
-  a_y = v_ego ** 2 * angle_steers * CV.DEG_TO_RAD / (CP.steerRatio * CP.wheelbase * 1.75)
+  a_y = v_ego ** 2 * angle_steers * CV.DEG_TO_RAD / (CP.steerRatio * CP.wheelbase * 3)
   a_x_allowed = math.sqrt(max(a_total_max ** 2 - a_y ** 2, 0.))
 
   return [a_target[0], min(a_target[1], a_x_allowed)]
 
+def limit_accel_in_turns_FP(v_ego, angle_steers, a_target, CP):
+  """
+  This function returns a limited long acceleration allowed, depending on the existing lateral acceleration
+  this should avoid accelerating when losing the target in turns
+  """
+  # FIXME: This function to calculate lateral accel is incorrect and should use the VehicleModel
+  # The lookup table for turns should also be updated if we do this
+  a_total_max = interp(v_ego, _A_TOTAL_MAX_BP, _A_TOTAL_MAX_V)
+  a_y = v_ego ** 2 * angle_steers * CV.DEG_TO_RAD / (CP.steerRatio * CP.wheelbase)
+  a_x_allowed = math.sqrt(max(a_total_max ** 2 - a_y ** 2, 0.))
 
+  return [a_target[0], min(a_target[1], a_x_allowed)]
+  
 def get_accel_from_plan(CP, speeds, accels):
   if len(speeds) == CONTROL_N:
     v_target_now = interp(DT_MDL, CONTROL_N_T_IDX, speeds)
@@ -209,7 +221,7 @@ class LongitudinalPlanner:
 
     accel_limits = [sm['frogpilotPlan'].minAcceleration, sm['frogpilotPlan'].maxAcceleration]
     if self.mpc.mode == 'acc':
-      accel_limits_turns = limit_accel_in_turns(v_ego, sm['carState'].steeringAngleDeg, accel_limits, self.CP)
+      accel_limits_turns = limit_accel_in_turns_FP(v_ego, sm['carState'].steeringAngleDeg, accel_limits, self.CP)
     else:
       accel_limits_turns = [ACCEL_MIN, ACCEL_MAX]
 
