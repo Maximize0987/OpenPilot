@@ -78,10 +78,10 @@ class CarInterface(CarInterfaceBase):
 
     elif candidate in (CAR.TOYOTA_RAV4_TSS2, CAR.TOYOTA_RAV4_TSS2_2022, CAR.TOYOTA_RAV4_TSS2_2023):
       ret.lateralTuning.init('pid')
-      ret.lateralTuning.pid.kiBP = [0.0]
-      ret.lateralTuning.pid.kpBP = [0.0]
-      ret.lateralTuning.pid.kpV = [0.6]           # old = ret.lateralTuning.pid.kpV = [0.6]
-      ret.lateralTuning.pid.kiV = [0.1025]            # old = ret.lateralTuning.pid.kiV = [0.1]
+      ret.lateralTuning.pid.kiBP = [0.0, 14, 27]          # old = ret.lateralTuning.pid.kiBP = [0.0]
+      ret.lateralTuning.pid.kpBP = [0.0, 14, 27]          # old = ret.lateralTuning.pid.kpBP = [0.0]
+      ret.lateralTuning.pid.kpV = [0.7, 0.6, 0.45]        # old = ret.lateralTuning.pid.kpV = [0.6]
+      ret.lateralTuning.pid.kiV = [0.0975, 0.1, 0.1025]   # old = ret.lateralTuning.pid.kiV = [0.1]
       ret.lateralTuning.pid.kf = 0.00007818594
 
       # 2019+ RAV4 TSS2 uses two different steering racks and specific tuning seems to be necessary.
@@ -159,9 +159,9 @@ class CarInterface(CarInterfaceBase):
       if ret.flags & ToyotaFlags.NEW_TOYOTA_TUNE or ret.flags & ToyotaFlags.RAISED_ACCEL_LIMIT:
         tune.kiV = [0.3]
 
-      ret.stoppingDecelRate = 0.1  # reach stopping target smoothly
-      ret.vEgoStopping = 0.15
-      ret.vEgoStarting = 0.15
+      ret.stoppingDecelRate = 0.2      # old = ret.stoppingDecelRate = 0.1  # reach stopping target smoothly
+      # old = ret.vEgoStopping = 0.15
+      # old = ret.vEgoStarting = 0.15
 
     return ret
 
