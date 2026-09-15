@@ -21,6 +21,7 @@ class CameraOffset:
   @staticmethod
   def apply(model_transform: np.ndarray, intrinsics: np.ndarray, camera_height: float, offset: float) -> np.ndarray:
     height = camera_height if camera_height > 0.0 else DEFAULT_CAMERA_HEIGHT
+    print(f"HEIGHT: {height}")
     cy = intrinsics[1, 2]
     shear = np.eye(3, dtype=np.float32)
     shear[0, 1] = offset / height
