@@ -1285,7 +1285,7 @@ def main(demo=False):
       dc = DEVICE_CAMERAS[(str(sm['deviceState'].deviceType), str(sm['roadCameraState'].sensor))]
       model_transform_main = get_warp_matrix(device_from_calib_euler, dc.ecam.intrinsics if main_wide_camera else dc.fcam.intrinsics, False).astype(np.float32)
       model_transform_extra = get_warp_matrix(device_from_calib_euler, dc.ecam.intrinsics, True).astype(np.float32)
-      camera_height = sm["liveCalibration"].height[0] if sm["liveCalibration"].height else DEFAULT_CAMERA_HEIGHT
+      camera_height = 1.1 #sm["liveCalibration"].height[0] if sm["liveCalibration"].height else DEFAULT_CAMERA_HEIGHT
       model_transform_main, model_transform_extra = camera_offset.update(
         model_transform_main,
         model_transform_extra,
