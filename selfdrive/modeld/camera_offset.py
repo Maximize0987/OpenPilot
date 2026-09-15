@@ -3,7 +3,7 @@ from __future__ import annotations
 import numpy as np
 
 
-DEFAULT_CAMERA_HEIGHT = 1.22
+DEFAULT_CAMERA_HEIGHT = 1.1 #1.22
 CAMERA_OFFSET_SMOOTHING = 0.1
 
 
