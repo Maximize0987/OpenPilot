@@ -557,10 +557,10 @@ class ModelRenderer(Widget):
       lead_speed_unit = " m/s" if use_si_metrics else " km/h"
       speed_conversion_metrics = 1.0 if use_si_metrics else CV.MS_TO_KPH
     else:
-      lead_distance_unit = "ft"
-      distance_conversion = CV.METER_TO_FOOT
+      lead_distance_unit = "m"
+      distance_conversion = 1.0
       lead_speed_unit = " mph"
-      speed_conversion_metrics = CV.MS_TO_MPH
+      speed_conversion_metrics = 1.0 if use_si_metrics else CV.MS_TO_KPH
 
     y_rel = getattr(lead_data, "yRel", 0.0)
     lead_distance = lead_data.dRel + (abs(y_rel) if adjacent else 0.0)
